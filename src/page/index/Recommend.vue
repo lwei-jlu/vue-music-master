@@ -1,5 +1,5 @@
 <template>
-  <p>个性推荐123123123</p>
+  <p>个性推荐ttttttttttttttttt</p>
 </template>
 
 <script>
