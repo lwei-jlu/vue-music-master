@@ -5,7 +5,10 @@
     <button>3</button>
 
     <router-view></router-view>
-
+    <button>foot-1</button>
+    <button>foot-2</button>
+    <button>foot-3</button>
+    <button>foot-4</button>
   </div>
 </template>
 
