@@ -21,7 +21,7 @@
      <icon name="flag"></icon>
      <icon name="music"></icon>
      <icon name="signal" flip="horizontal"></icon>
-     <icon name="baidu"></icon>
+
     </div>
 
     
@@ -31,16 +31,6 @@
 <script>
 import apiurl from '../../assets/js/api'
 import 'swiper/dist/css/swiper.css'
-
-import Icon from 'vue-awesome/components/Icon'
-
-Icon.register({
-  baidu: {
-    width: 23.868,
-    height: 26,
-    d: 'file:///C:/Users/Administrator/Downloads/man.svg'
-  }
-})
 
 export default {
   data () {
