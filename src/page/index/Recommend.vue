@@ -5,11 +5,11 @@
         <img v-bind:src="item.pic">
         <div class="footdiv" v-bind:style="{ background: item.titleColor }">{{ item.typeTitle }}</div>
       </swiper-slide> -->
-      <swiper-slide>1</swiper-slide>
+      <!-- <swiper-slide>1</swiper-slide>
       <swiper-slide>12</swiper-slide>
       <swiper-slide>14</swiper-slide>
       <swiper-slide>15</swiper-slide>
-      <swiper-slide>15</swiper-slide>
+      <swiper-slide>15</swiper-slide> -->
     </swiper>
     <div>
       <button>私人FM</button>
