@@ -1,7 +1,7 @@
 <template>
   <div>
     <button>1</button>
-    <button>2</button>
+    <button @click="changeTab">2</button>
     <button>3</button>
 
     <router-view></router-view>
@@ -17,6 +17,11 @@ export default {
   data () {
     return {
 
+    }
+  },
+  methods: {
+    changeTab () {
+      this.$router.push({path: '/root/index/top'})
     }
   }
 }
