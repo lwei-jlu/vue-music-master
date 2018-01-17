@@ -23,77 +23,68 @@
         <div>
       testttttttttttt
     </div>
-        <div>
-      testttttttttttt
-    </div>
-        <div>
-      testttttttttttt
-    </div>
+    
   </div>
 </template>
 
 <script>
-import apiurl from "../../assets/js/api";
-import "swiper/dist/css/swiper.css";
+import apiurl from '../../assets/js/api'
+import 'swiper/dist/css/swiper.css'
 export default {
-  data() {
+  data () {
     return {
-      banner: "",
-      resource: "",
-      privatecontent: "",
-      newsong: "",
+      banner: '',
+      resource: '',
+      privatecontent: '',
+      newsong: '',
       swiperOption: {
         autoplay: false,
         loop: true,
         grabCursor: true
       }
-    };
-  },
-  methods: {
-    getBanner() {
-      // 轮播图
-      this.$http.get(apiurl + "/banner").then(res => {
-        this.banner = res.data.banners;
-      });
-    },
-    getResource() {
-      // 推荐歌单
-      this.$http.get(apiurl + "/recommend/resource").then(res => {
-        this.resource = res.data.banners;
-      });
-    },
-    getPrivatecontent() {
-      // 独家放送
-      this.$http.get(apiurl + "/personalized/privatecontent").then(res => {
-        this.privatecontent = res.data.banners;
-      });
-    },
-    getNewsong() {
-      // 推荐新音乐
-      this.$http.get(apiurl + "/personalized/newsong").then(res => {
-        this.privatecontent = res.data.banners;
-      });
     }
   },
-  created() {
+  methods: {
+    getBanner () { // 轮播图
+      this.$http.get(apiurl + '/banner').then(res => {
+        this.banner = res.data.banners
+      })
+    },
+    getResource () { // 推荐歌单
+      this.$http.get(apiurl + '/recommend/resource').then(res => {
+        this.resource = res.data.banners
+      })
+    },
+    getPrivatecontent () { // 独家放送
+      this.$http.get(apiurl + '/personalized/privatecontent').then(res => {
+        this.privatecontent = res.data.banners
+      })
+    },
+    getNewsong () { // 推荐新音乐
+      this.$http.get(apiurl + '/personalized/newsong').then(res => {
+        this.privatecontent = res.data.banners
+      })
+    }
+  },
+  created () {
     // this.getBanner()
   }
-};
+}
 </script>
 
 <style>
-.maindiv {
-  position: relative;
-  height: 200px;
-}
-.footdiv {
-  position: absolute;
-  height: 25px;
-  bottom: 2%;
-  right: 0%;
-  border-radius: 10px 0 0 10px;
-  padding-left: 15px;
-  padding-right: 10px;
-  color: #fff;
-}
+  .maindiv{
+    position: relative;
+    height: 200px;
+  }
+  .footdiv{
+    position: absolute;
+    height: 25px;
+    bottom: 2%;
+    right: 0%;
+    border-radius: 10px 0 0 10px;
+    padding-left: 15px;
+    padding-right: 10px;
+    color: #FFF;
+  }
 </style>
