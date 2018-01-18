@@ -45,8 +45,9 @@ export default {
   }
   .root{
     position: fixed;
-    top: 5%;
+    top: 0%;
     bottom: 90%;
+    padding-top: 5%;
     left: 0;
     right: 0;
     z-index: 1000;

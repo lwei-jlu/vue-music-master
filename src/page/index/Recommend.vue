@@ -6,7 +6,7 @@
         <div class="footdiv" v-bind:style="{ background: item.titleColor }">{{ item.typeTitle }}</div>
       </swiper-slide>
     </swiper>
-    <div>
+    <div class='reTop'>
       <button>私人FM</button>
       <button>每日推荐</button>
       <button>歌单</button>
@@ -162,7 +162,7 @@ export default {
 <style>
 
   .maindiv{
-    margin-top: 10%;
+    margin-top: 30%;
   }
   .footdiv{
     position: absolute;
@@ -177,6 +177,13 @@ export default {
   .privatecontent{
     position:absolute;
     margin-top: 50px;
+  }
+  .reTop{
+    bottom: 80%;
+    left: 0;
+    right: 0;
+    position: fixed;
+    top: 15%;
   }
   ul{
     padding: 0px;
