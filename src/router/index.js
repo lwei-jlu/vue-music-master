@@ -6,6 +6,7 @@ import Recommend from '../page/index/Recommend'
 import Radio from '../page/index/Radio'
 import Top from '../page/index/Top'
 import SongList from '../page/index/SongList'
+import Search from '../page/search/Search'
 // import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
@@ -45,6 +46,11 @@ export default new Router({
               component: SongList
             }
           ]
+        },
+        {
+          path: 'search',
+          name: 'Search',
+          component: Search
         }
       ]
     }

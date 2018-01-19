@@ -1,5 +1,7 @@
 <template>
-  <p>歌单</p>
+  <div style="margin-top:30%;">
+    <p>歌单</p>
+  </div>
 </template>
 
 <script>

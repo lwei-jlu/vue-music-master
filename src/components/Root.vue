@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="root">
-      <button>1</button>
-      <button @click="changeTab">2</button>
-      <button>3</button>
+      <button @click="changeTab(1)">主页</button>
+      <button>播放</button>
+      <button @click="changeTab(3)">搜索</button>
     </div>
 
     <router-view></router-view>
     <div class='footer'>
       <div style="text-align: center;">
-        <button>foot-1</button>
-        <button>foot-2</button>
-        <button>foot-3</button>
-        <button>foot-4</button>
+        <button>发现音乐</button>
+        <button>我的音乐</button>
+        <button>朋友</button>
+        <button>帐号</button>
       </div>
     </div>
 
@@ -27,8 +27,13 @@ export default {
     }
   },
   methods: {
-    changeTab () {
-      this.$router.push({path: '/root/index/top'})
+    changeTab (id) {
+      if (id === 1) {
+        this.$router.push({path: '/root/index'})
+      } else if (id === 3) {
+        this.$router.push({path: '/root/search'})
+      }
+      // this.$router.push({path: '/root/search'})
     }
   }
 }

@@ -1,5 +1,7 @@
 <template>
-  <p>排行榜</p>
+  <div style="margin-top:30%;">
+    <p>排行榜</p>
+  </div>
 </template>
 
 <script>
