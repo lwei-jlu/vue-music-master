@@ -72,7 +72,6 @@ export default {
     },
     getPrivatecontent () { // 独家放送
       this.$http.get(apiurl + '/personalized/privatecontent').then(res => {
-        this.privatecontent = res.data.result
         console.log(this.privatecontent.length)
       })
     },

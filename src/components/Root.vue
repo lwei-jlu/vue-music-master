@@ -5,33 +5,28 @@
       <button>播放</button>
       <button @click="changeTab(3)">搜索</button>
     </div>
-
     <router-view></router-view>
-    <div class='footer'>
-      <div style="text-align: center;">
-        <button>发现音乐</button>
-        <button>我的音乐</button>
-        <button>朋友</button>
-        <button>帐号</button>
-      </div>
-    </div>
-
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
+import Footer from '@/components/Footer'
 export default {
   data () {
     return {
 
     }
   },
+  components: {
+    Footer
+  },
   methods: {
     changeTab (id) {
       if (id === 1) {
         this.$router.push({path: '/root/index'})
       } else if (id === 3) {
-        this.$router.push({path: '/root/search'})
+        this.$router.push({path: '/search'})
       }
       // this.$router.push({path: '/root/search'})
     }
@@ -40,14 +35,6 @@ export default {
 </script>
 
 <style scoped>
-  .footer{
-    position: fixed;
-    /* top: 90%; */
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-  }
   .root{
     position: fixed;
     top: 0%;

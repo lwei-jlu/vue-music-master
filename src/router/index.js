@@ -46,13 +46,13 @@ export default new Router({
               component: SongList
             }
           ]
-        },
-        {
-          path: 'search',
-          name: 'Search',
-          component: Search
         }
       ]
+    },
+    {
+      path: '/search',
+      name: 'Search',
+      component: Search
     }
   ],
   mode: 'history'
