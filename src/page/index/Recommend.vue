@@ -22,7 +22,7 @@
       <div>独家放送</div>
       <ul>
         <li v-for="item,index in privatecontent" v-bind:key="index" style="width:50%;">
-          <img :src="item.sPicUrl" style="zoom:0.5">
+          <img :src="item.sPicUrl" style="width:100%;">
           <p>{{item.name}}</p>
         </li>
       </ul>  
@@ -31,8 +31,18 @@
     <div class="newsong">
       <div>新歌推荐</div>
       <ul>
-        <li v-for="item,index in newsong" v-bind:key="index" style="width:30%;">
-          <img :src="item.song.album.blurPicUrl" style="zoom:0.1">
+        <li v-for="item,index in newsong" v-bind:key="index" style="width:33%;">
+          <img :src="item.song.album.blurPicUrl" style="width:100%;">
+          <p>{{item.name}}</p>
+        </li>
+      </ul>  
+    </div>
+
+    <div class="resource">
+      <div>推荐歌单</div>
+      <ul>
+        <li v-for="item,index in resource" v-bind:key="index" style="width:33%;">
+          <img :src="item.picUrl" style="width:100%;">
           <p>{{item.name}}</p>
         </li>
       </ul>  
@@ -72,7 +82,7 @@ export default {
     },
     getPrivatecontent () { // 独家放送
       this.$http.get(apiurl + '/personalized/privatecontent').then(res => {
-        console.log(this.privatecontent.length)
+        this.privatecontent = res.data.result
       })
     },
     getNewsong () { // 推荐新音乐
@@ -122,6 +132,7 @@ export default {
     margin: 0px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
   li{
     list-style-type: none;
