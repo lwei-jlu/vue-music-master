@@ -38,7 +38,8 @@ export default {
     return {
       searchContent: '',
       searchList: '',
-      showKeySearch: false
+      showKeySearch: false,
+      timer: ''
     }
   },
   components: {
@@ -46,14 +47,39 @@ export default {
   },
   methods: {
     getSearchList () {
-      this.$http.get(apiurl + '/search?keywords=' + this.searchContent).then(res => {
-        if (res.data.code === 200) {
-          this.showKeySearch = true
-          this.searchList = res.data.result.songs
-        } else {
-          this.showKeySearch = false
-        }
-      })
+      const temp = this
+      if (this.timer) {
+        clearInterval(this.timer)
+        this.timer = setTimeout(function () {
+          temp.$http.get(apiurl + '/search?keywords=' + temp.searchContent).then(res => {
+            if (res.data.code === 200) {
+              temp.showKeySearch = true
+              temp.searchList = res.data.result.songs
+            } else {
+              temp.showKeySearch = false
+            }
+          })
+        }, 1000)
+      } else {
+        this.timer = setTimeout(function () {
+          temp.$http.get(apiurl + '/search?keywords=' + temp.searchContent).then(res => {
+            if (res.data.code === 200) {
+              temp.showKeySearch = true
+              temp.searchList = res.data.result.songs
+            } else {
+              temp.showKeySearch = false
+            }
+          })
+        }, 1000)
+      }
+      // this.$http.get(apiurl + '/search?keywords=' + this.searchContent).then(res => {
+      //   if (res.data.code === 200) {
+      //     this.showKeySearch = true
+      //     this.searchList = res.data.result.songs
+      //   } else {
+      //     this.showKeySearch = false
+      //   }
+      // })
     },
     toIndex () {
       this.$router.push({ path: '/' })
