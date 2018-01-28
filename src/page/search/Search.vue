@@ -1,10 +1,5 @@
 <template>
   <div>
-    <!-- <div class="input-box">
-      <icon name="search" @click="getSearchList" style="position:absolute;width:10%;left:0;"></icon>
-      <input type="text" v-model="searchContent" placeholder="input something" @input="getSearchList">
-      <p style="display:inline;float:right;" @click="toIndex">取消</p>
-    </div> -->
 
     <div>
       <icon name="search" @click="getSearchList"></icon>
@@ -12,19 +7,19 @@
       <p style="display:inline" @click="toIndex">取消</p>
     </div>
 
-    <!-- <div style="position:absolute;width:15%;right:0;" @click="toIndex">取消</div> -->
-    <!-- <ul v-show="showKeySearch" class="keySearchUl">
-      <li v-for="(item,index) in searchList" style="border-bottom:1px solid;width:100%;">
-        <p>{{item.name}} -- {{item.artists[0].name}}</p>
-      </li>
-    </ul> -->
     <div v-show="showKeySearch" class="keySearchUl">
-      <div style="background-color: #dad6d6;padding-top: 10px;padding-bottom: 10px;">搜索<span style="display:inline;margin-left: 30px;">{{ searchContent }}</span></div>
-      <a v-for="(item,index) in searchList">
+      <div style="background-color: #dad6d6;padding-top: 10px;padding-bottom: 10px;" @click="showType">搜索<span style="display:inline;margin-left: 30px;">{{ searchContent }}</span></div>
+      <a v-for="(item,index) in searchList" @click="showType">
         {{item.name}} -- {{item.artists[0].name}}
       </a>
     </div>
-
+    <div v-show="showSearchType">
+      <button style="width:20%;" @click="turnSearchType('song')">单曲</button>
+      <button style="width:20%;" @click="turnSearchType('artist')">歌手</button>
+      <button style="width:20%;" @click="turnSearchType('album')">专辑</button>
+      <button style="width:20%;" @click="turnSearchType('songList')">歌单</button>
+    </div>
+    <router-view></router-view>
     <Footer></Footer>
   </div>
 </template>
@@ -32,6 +27,7 @@
 <script>
 import apiurl from '../../assets/js/api'
 import Footer from '@/components/Footer'
+import { mapState } from 'vuex'
 export default {
   name: 'Search',
   data () {
@@ -39,11 +35,15 @@ export default {
       searchContent: '',
       searchList: '',
       showKeySearch: false,
-      timer: ''
+      timer: '',
+      showSearchType: false
     }
   },
   components: {
     Footer
+  },
+  computed: {
+    ...mapState([])
   },
   methods: {
     getSearchList () {
@@ -57,6 +57,7 @@ export default {
               temp.searchList = res.data.result.songs
             } else {
               temp.showKeySearch = false
+              temp.showSearchType = false
             }
           })
         }, 1000)
@@ -68,6 +69,7 @@ export default {
               temp.searchList = res.data.result.songs
             } else {
               temp.showKeySearch = false
+              temp.showSearchType = false
             }
           })
         }, 1000)
@@ -83,6 +85,27 @@ export default {
     },
     toIndex () {
       this.$router.push({ path: '/' })
+    },
+    showType () {
+      this.showSearchType = true
+      this.showKeySearch = false
+      this.$router.push({ path: '/search/searchSong' })
+    },
+    turnSearchType (index) {
+      switch (index) {
+        case 'song':
+          this.$router.push({ path: '/search/searchSong' })
+          break
+        case 'album':
+          this.$router.push({ path: '/search/searchAlbum' })
+          break
+        case 'artist':
+          this.$router.push({ path: '/search/searchArtist' })
+          break
+        case 'songList':
+          this.$router.push({ path: '/search/searchSongList' })
+          break
+      }
     }
   }
 }

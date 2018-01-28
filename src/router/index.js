@@ -7,6 +7,11 @@ import Radio from '../page/index/Radio'
 import Top from '../page/index/Top'
 import SongList from '../page/index/SongList'
 import Search from '../page/search/Search'
+import SearchAlbum from '../page/search/SearchALbum'
+import SearchArtist from '../page/search/SearchArtist'
+import SearchSong from '../page/search/SearchSong'
+import SearchSongList from '../page/search/SearchSongLIst'
+
 // import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
@@ -52,7 +57,25 @@ export default new Router({
     {
       path: '/search',
       name: 'Search',
-      component: Search
+      component: Search,
+      children: [
+        {
+          path: 'searchalbum',
+          component: SearchAlbum
+        },
+        {
+          path: 'searchArtist',
+          component: SearchArtist
+        },
+        {
+          path: 'searchSong',
+          component: SearchSong
+        },
+        {
+          path: 'searchSongList',
+          component: SearchSongList
+        }
+      ]
     }
   ],
   mode: 'history'
