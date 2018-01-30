@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 import axios from 'axios'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'vue-awesome/icons'
@@ -16,6 +17,7 @@ Vue.component('icon', Icon)
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

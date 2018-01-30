@@ -1,7 +1,7 @@
-const playLIst = 'PLAYLIST'
+const putPlayList = 'putPlayList'
 
 export default {
-  [playLIst] (state, arr) {
+  [putPlayList] (state, arr) {
     state.playList = arr
   }
 }

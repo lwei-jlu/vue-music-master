@@ -13,7 +13,7 @@
         {{item.name}} -- {{item.artists[0].name}}
       </a>
     </div>
-    <div v-show="showSearchType">
+    <div v-show="showPlayList">
       <button style="width:20%;" @click="turnSearchType('song')">单曲</button>
       <button style="width:20%;" @click="turnSearchType('artist')">歌手</button>
       <button style="width:20%;" @click="turnSearchType('album')">专辑</button>
@@ -27,7 +27,7 @@
 <script>
 import apiurl from '../../assets/js/api'
 import Footer from '@/components/Footer'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'Search',
   data () {
@@ -35,15 +35,17 @@ export default {
       searchContent: '',
       searchList: '',
       showKeySearch: false,
-      timer: '',
-      showSearchType: false
+      timer: ''
     }
   },
   components: {
     Footer
   },
   computed: {
-    ...mapState([])
+    ...mapState([
+      'showPlayList',
+      'playList'
+    ])
   },
   methods: {
     getSearchList () {
@@ -54,10 +56,12 @@ export default {
           temp.$http.get(apiurl + '/search?keywords=' + temp.searchContent).then(res => {
             if (res.data.code === 200) {
               temp.showKeySearch = true
-              temp.searchList = res.data.result.songs
+              const result = res.data.result.songs
+              temp.searchList = result.slice(0, 5)
+              temp.putPlayList(result)
             } else {
               temp.showKeySearch = false
-              temp.showSearchType = false
+              temp.$store.state.showPlayList = false
             }
           })
         }, 1000)
@@ -69,7 +73,7 @@ export default {
               temp.searchList = res.data.result.songs
             } else {
               temp.showKeySearch = false
-              temp.showSearchType = false
+              temp.$store.state.showPlayList = false
             }
           })
         }, 1000)
@@ -87,7 +91,7 @@ export default {
       this.$router.push({ path: '/' })
     },
     showType () {
-      this.showSearchType = true
+      this.$store.state.showPlayList = true
       this.showKeySearch = false
       this.$router.push({ path: '/search/searchSong' })
     },
@@ -106,7 +110,10 @@ export default {
           this.$router.push({ path: '/search/searchSongList' })
           break
       }
-    }
+    },
+    ...mapActions([
+      'putPlayList'
+    ])
   }
 }
 </script>

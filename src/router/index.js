@@ -10,7 +10,8 @@ import Search from '../page/search/Search'
 import SearchAlbum from '../page/search/SearchALbum'
 import SearchArtist from '../page/search/SearchArtist'
 import SearchSong from '../page/search/SearchSong'
-import SearchSongList from '../page/search/SearchSongLIst'
+import SearchSongList from '../page/search/SearchSongList'
+import Play from '../page/play/Play'
 
 // import HelloWorld from '@/components/HelloWorld'
 
@@ -76,6 +77,11 @@ export default new Router({
           component: SearchSongList
         }
       ]
+    },
+    {
+      path: '/play',
+      name: 'Play',
+      component: Play
     }
   ],
   mode: 'history'

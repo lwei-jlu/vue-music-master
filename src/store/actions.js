@@ -1,6 +1,6 @@
 
 export default {
-  playList ({commit}, arr) {
-    commit('PLAYLIST', arr)
+  putPlayList ({commit}, arr) {
+    commit('putPlayList', arr)
   }
 }
