@@ -9,7 +9,9 @@ const state = {
   showPlayList: false,
   playList: '',
   playIndex: '',
-  playUrl: 'http://m10.music.126.net/20180130211846/5e014d0c769f630a3fa789020d2ab32c/ymusic/0b23/006a/51bf/0d8255acc1634702e1a184d446f91b88.mp3'
+  playUrl: '',
+  playDetail: '',
+  playLyric: ''
 }
 
 export default new Vuex.Store({

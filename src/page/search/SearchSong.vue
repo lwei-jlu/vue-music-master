@@ -13,7 +13,6 @@
 
 <script>
 import apiurl from '../../assets/js/api'
-import axios from 'axios'
 import { mapState, mapActions } from 'vuex'
 export default {
   data () {
@@ -24,7 +23,10 @@ export default {
     ...mapState([
       'showPlayList',
       'playList',
-      'playIndex'
+      'playIndex',
+      'playUrl',
+      'playDetail',
+      'playLyric'
     ])
   },
   methods: {
@@ -33,23 +35,26 @@ export default {
     ]),
     turnPlay (id) {
       this.$store.state.playIndex = id
-      function getUrl () {
-        return axios.get(apiurl + '/music/url?id=' + id)
-      }
-      function getDetail () {
-        return axios.get(apiurl + '/song/detail?ids=' + id)
-      }
-
-      // function getLyric () {
-      //   return axios.get(apiurl + '/lyric?id' + id)
-      // }
-
-      axios.all([getUrl(), getDetail()])
-        .then(axios.spread((res1, res2) => {
-          // const arr = [res1, res2]
-          console.log(res1.data.data[0])
-        }))
-      // this.$router.push({ path: '/play' })
+      this.$http.get(apiurl + '/music/url?id=' + id).then(res => {
+        this.$store.state.playUrl = res.data.data[0]
+      }).catch(error => {
+        console.log(error)
+        this.$store.state.playUrl = ''
+      })
+      this.$http.get(apiurl + '/song/detail?ids=' + id).then(res => {
+        console.log(res)
+        this.$store.state.playDetail = res.data.songs[0]
+      }).catch(error => {
+        console.log(error)
+        this.$store.state.playDetail = ''
+      })
+      this.$http.get(apiurl + '/lyric?id=' + id).then(res => {
+        this.$store.state.playLyric = res.data.lrc.lyric
+      }).catch(error => {
+        console.log(error)
+        this.$store.state.playLyric = ''
+      })
+      this.$router.push({ path: '/play' })
     }
   }
 }
@@ -62,5 +67,11 @@ export default {
   }
   li{
     list-style-type: none;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  li:hover{
+    background-color: #f1f1f1;
   }
 </style>

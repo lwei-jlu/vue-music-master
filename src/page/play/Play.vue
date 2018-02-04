@@ -1,18 +1,20 @@
 <template>
   <div>
+    <div>
+      <img v-bind:src="playDetail.al.picUrl" style="width:500px;">
+    </div>
     <audio controls>
-        <source v-bind:src="playUrl" type="audio/mpeg">
+        <source v-bind:src="playUrl.url" type="audio/mpeg">
     </audio>
   </div>
 </template>
 
 <script>
-import apiurl from '../../assets/js/api'
+// import apiurl from '../../assets/js/api'
 import { mapState, mapActions } from 'vuex'
 export default {
   data () {
     return {
-      songDetail: ''
     }
   },
   computed: {
@@ -20,7 +22,9 @@ export default {
       'showPlayList',
       'playList',
       'playIndex',
-      'playUrl'
+      'playUrl',
+      'playDetail',
+      'playLyric'
     ])
   },
   methods: {
@@ -29,9 +33,9 @@ export default {
     ])
   },
   created () {
-    this.$http.get(apiurl + '/music/url?id=' + this.playIndex).then(res => {
-      this.songDetail = res.data.data[0]
-    })
+    // this.$http.get(apiurl + '/music/url?id=' + this.playIndex).then(res => {
+    //   this.songDetail = res.data.data[0]
+    // })
   }
 }
 </script>
