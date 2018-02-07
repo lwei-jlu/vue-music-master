@@ -38,3 +38,6 @@ http://es6.ruanyifeng.com/#docs/intro
 
 audio
 https://www.cnblogs.com/kingplus/p/5587441.html
+
+fontawesome
+https://fontawesome.com/
