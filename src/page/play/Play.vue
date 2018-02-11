@@ -1,11 +1,19 @@
 <template>
   <div>
-    <div>
+    <!-- <div>
       <img v-bind:src="playDetail.al.picUrl" style="width:500px;">
-    </div>
+    </div> -->
     <audio controls>
         <source v-bind:src="playUrl.url" type="audio/mpeg">
     </audio>
+    <div>
+      <i class="fas fa-random fa-2x"></i>
+      <i class="fas fa-step-backward fa-2x"></i>
+      <i class="far fa-play-circle fa-2x"></i>
+      <i class="far fa-pause-circle fa-2x"></i>
+      <i class="fas fa-step-forward fa-2x"></i>
+      <i class="fas fa-list-ul fa-2x"></i>
+    </div>
   </div>
 </template>
 
