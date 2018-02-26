@@ -13,6 +13,7 @@
       <i class="far fa-pause-circle fa-2x"></i>
       <i class="fas fa-step-forward fa-2x"></i>
       <i class="fas fa-list-ul fa-2x"></i>
+      <i class="fas fa-list-ul fa-2x"></i>
     </div>
   </div>
 </template>
