@@ -11,7 +11,8 @@ const state = {
   playIndex: '',
   playUrl: '',
   playDetail: '',
-  playLyric: ''
+  playLyric: '',
+  showPLayer: false
 }
 
 export default new Vuex.Store({
